@@ -59,31 +59,37 @@ function displaySimonPattern() {
 
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
+  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]);
   compare()
 })
 redTile.addEventListener('click', () => {
   playerSequence.push("red");
+  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]);
   compare()
 })
 yellowTile.addEventListener('click', () => {
   playerSequence.push("yellow");
+  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]);
   compare()
 })
 blueTile.addEventListener('click', () => {
   playerSequence.push("blue");
+  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]);
   compare()
 })
 
 function compare() {
-  if (playerSequence[playerSequence.length - 1] === simonSequence[playerSequence.length - 1]) {
+  if (playerSequence[playerSequence.length - 1] === simonSequence[simonSequence.length - 1]) {
     displaySimonPattern();
     playerSequence.length = 0;
-    console.log("This shouldn;'t appear");
   } else {
-    console.log("YOU LOSE");
+    console.log("asdasd");
   }
 }
 
+//UP ABOVE ITS CHECKING THE STRING VALUE NOT THE NUMBERICAL VALUE
+//NEEDS TO RETURN THE NUMBERICAL VALUE?
+//What's happening, it's not comparing the last two array indexes to see if they're the same, it's grabbing the playerSequence as it's clicked, and when it happens to be the same as the last of the simonSequence, for example Red-Blue-Red, it will repeat after the first click, as red === red.
 
 
 function playSimon() {
