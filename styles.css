@@ -1,0 +1,29 @@
+#top-container {
+  display: flex;
+}
+
+#bottom-container {
+  display: flex;
+}
+
+.simon {
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+}
+
+.simon-button:active {
+  background-color: white;
+}
+
+a.simon-button {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+
+#green {background-color: green;}
+#red {background-color: red;}
+#yellow {background-color: yellow;}
+#blue {background-color: blue;}
