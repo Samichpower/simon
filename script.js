@@ -1,31 +1,11 @@
-//PHASE 1
-//Button to start the game -- SAVE THIS UNTIL AFTER THE GAME IS WORKING
-
-//Function to get the simon. A random number will be generated and if statement for returning the color.
-//The color will be pushed into an array
-//A function for executing the array.
-//It will cycle through the array, making the corresponding squares flash.
-
-//PHASE 2
-//The player will chose a square. 
-//The choice will be pushed into an array with the same value as the simon so it returns true when compared.
-//At every player click, it will be compared to the corresponding simon array value.
-//Every loop reset the playerSequence to [].
-//if at the end of the sequence the players array is equal to simons array, run showSimonPattern().
+//if at the end of the sequence the players array is equal to simons array, run displaySimonPattern().
 //If not, give an error, perhaps flash all squares white 3 times, end the game.
-
 
 //START GAME
 //gives a pattern
 //player matches the pattern
-//once the players array is equal to simons array, proceed to the next iteration, aka showSimonPattern()
+//once the players array is equal to simons array, proceed to the next iteration, aka displaySimonPattern()
 //After the players answer is completely equal to simons, it needs to behave as if start game was clicked again, as it is now at least.
-//inside the playGame function, the game needs to be in a while loop.
-
-//every click it needs to compare the last array element with the corresponding simon one.
-//if it's false, the game is lost.
-//if it's true, nothing.
-//it goes until the players array is === to simons, then it empties the players array.
 
 const startBtn = document.querySelector('.start-button');
 const greenTile = document.querySelector('#green');
@@ -55,10 +35,10 @@ function getSimonColor() {
 
 function displaySimonPattern() {
   simonSequence.push(getSimonColor());
-  function displayTileColor(colorTile, originalColor) {
-    colorTile.style.backgroundColor = "white";
+  function displayTileColor(tileColor, originalColor) {
+    tileColor.style.backgroundColor = "white";
     setTimeout(function() {
-      colorTile.style.backgroundColor = originalColor;
+      tileColor.style.backgroundColor = originalColor;
     }, 300); //sets how long the white is shown for
   }
 
@@ -73,7 +53,7 @@ function displaySimonPattern() {
     } else if (simonSequence[i] === "blue") {
       displayTileColor(blueTile, "blue");
     }
-    }, i * 500);
+    }, i * 500); //sets time between white flashes
   }
 }
 
@@ -95,8 +75,10 @@ blueTile.addEventListener('click', () => {
 })
 
 function compare() {
-  if (playerSequence[playerSequence.length - 1] === simonSequence[playerSequence.length -1]) {
-    console.log("VERY GOOD");
+  if (playerSequence[playerSequence.length - 1] === simonSequence[playerSequence.length - 1]) {
+    displaySimonPattern();
+    playerSequence.length = 0;
+    console.log("This shouldn;'t appear");
   } else {
     console.log("YOU LOSE");
   }
