@@ -73,7 +73,7 @@ function displaySimonPattern() {
     } else if (simonSequence[i] === "blue") {
       displayTileColor(blueTile, "blue");
     }
-    }, i * 600);
+    }, i * 500);
   }
 }
 
