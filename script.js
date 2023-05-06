@@ -14,6 +14,12 @@
 //if at the end of the sequence the players array is equal to simons array, run showSimonPattern().
 //If not, give an error, perhaps flash all squares white 3 times, end the game.
 
+//START GAME
+//gives a pattern
+//player matches the pattern
+//once the players array is equal to simons array, proceed to the next iteration, aka showSimonPattern()
+//After the players answer is completely equal to simons, it needs to behave as if start game was clicked again, as it is now at least.
+
 const startBtn = document.querySelector('.start-button');
 const greenTile = document.querySelector('#green');
 const redTile = document.querySelector('#red');
@@ -41,12 +47,14 @@ function getSimonColor() {
 }
 
 function showSimonPattern() {
+  simonSequence.push(getSimonColor());
   function displayTileColor(colorTile, originalColor) {
     colorTile.style.backgroundColor = "white";
     setTimeout(function() {
       colorTile.style.backgroundColor = originalColor;
     }, 300); //sets how long the white is shown for
   }
+
   for (let i = 0; i < simonSequence.length; i++) {
     setTimeout(function() {
     if (simonSequence[i] === "green") {
@@ -62,36 +70,22 @@ function showSimonPattern() {
   }
 }
 
-function compareSequences() {
-  for (let i = 0; i < playerSequence.length; i++) {
-    if (playerSequence === simonSequence) {
-      showSimonPattern();
-    }
-  }
-}
-
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
-  compareSequences();
 })
 redTile.addEventListener('click', () => {
   playerSequence.push("red");
-  compareSequences();
 })
 yellowTile.addEventListener('click', () => {
   playerSequence.push("yellow");
-  compareSequences();
 })
 blueTile.addEventListener('click', () => {
   playerSequence.push("blue");
-  compareSequences();
-  console.log(playerSequence)
 })
 
 
 
 function playSimon() {
-  simonSequence.push(getSimonColor());
   showSimonPattern();
 
 }
