@@ -8,6 +8,9 @@ const redTile = document.querySelector('#red');
 const yellowTile = document.querySelector('#yellow');
 const blueTile = document.querySelector('#blue');
 
+const highScore = document.querySelector('#high-score');
+const currentScore = document.querySelector('#current-score');
+
 const simonSequence = [];
 const playerSequence = [];
 
@@ -51,12 +54,6 @@ function displaySimonPattern() {
   }
 }
 
-function displayLosingPattern() {
-  displayTileColor(greenTile, "green");
-  displayTileColor(redTile, "red");
-  displayTileColor(yellowTile, "yellow");
-  displayTileColor(blueTile, "blue");
-}
 
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
@@ -86,6 +83,12 @@ function compareSequences() {
     n = 0;
   } else if (playerSequence[n] !== simonSequence[n]) {
     simonSequence.length = 0;
+    function displayLosingPattern() {
+      displayTileColor(greenTile, "green");
+      displayTileColor(redTile, "red");
+      displayTileColor(yellowTile, "yellow");
+      displayTileColor(blueTile, "blue");
+    }
     displayLosingPattern();
   } else {
     n++;
