@@ -1,5 +1,4 @@
 //FANCY THINGS TO ADD:
-//Fix the button 
 //Add sounds. Final step.
 
 const startBtn = document.querySelector('.start-button');
@@ -117,7 +116,6 @@ function playSimon() {
     playerSequence.length = 0;
     displaySimonPattern();
   }
-  
 }
 
 startBtn.addEventListener('click', playSimon);
