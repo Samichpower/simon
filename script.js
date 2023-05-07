@@ -57,33 +57,41 @@ function displaySimonPattern() {
   }
 }
 
+let n = 0;
+
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
   compareSequences();
+  n++;
 })
 redTile.addEventListener('click', () => {
   playerSequence.push("red");
   compareSequences();
+  n++;
 })
 yellowTile.addEventListener('click', () => {
   playerSequence.push("yellow");
   compareSequences();
+  n++;
 })
 blueTile.addEventListener('click', () => {
   playerSequence.push("blue");
   compareSequences();
+  n++;
 })
 
 function compareSequences() {
-  for (let i = 0; i < simonSequence.length; i++) {
-    if (playerSequence.toString() === simonSequence.toString()){
-      displaySimonPattern();
-      console.log(playerSequence.toString())
-      playerSequence.length = 0;
-    }
+  if (playerSequence.toString() === simonSequence.toString()){
+    displaySimonPattern();
+    playerSequence.length = 0;
+    n = 0;
+  } else if (playerSequence[n] !== simonSequence[n]) {
+    console.log(playerSequence[n], simonSequence[n]);
+    console.log("IT AINT THE SAME");
   }
 }
 
+//maybe a loop that increases the counter every time a tile is clicked, and that number is used to compare the array indexes.
 //It will break by simply only getting the last one correct. This is because it ONLY compares the last to see if they're accurate. It needs to compare every single index. for loop, every iteration will use i for comparing playerArray[i] === simonSequence[i].
 //The specific issue I'm dealing with is I need to figure out how to compare two arrays to eachother index-by-index, and only return true if the arrays are completely equal.
 
