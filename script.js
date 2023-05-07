@@ -59,31 +59,22 @@ function displaySimonPattern() {
 
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
-  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]); //debugging purposes
   compareSequences();
 })
 redTile.addEventListener('click', () => {
   playerSequence.push("red");
-  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]); //debugging purposes
   compareSequences();
 })
 yellowTile.addEventListener('click', () => {
   playerSequence.push("yellow");
-  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]); //debugging purposes
   compareSequences();
 })
 blueTile.addEventListener('click', () => {
   playerSequence.push("blue");
-  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]); //debugging purposes
   compareSequences();
 })
 
 function compareSequences() {
-  // if (playerSequence[simonSequence.length - 1] === simonSequence[simonSequence.length - 1]) {
-  //   displaySimonPattern();
-  //   playerSequence.length = 0;
-  // } THIS WORKS ONLY FOR THE LAST ONE.
-
   for (let i = 0; i < simonSequence.length; i++) {
     if (playerSequence.toString() === simonSequence.toString()){
       displaySimonPattern();
