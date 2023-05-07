@@ -8,9 +8,6 @@ const redTile = document.querySelector('#red');
 const yellowTile = document.querySelector('#yellow');
 const blueTile = document.querySelector('#blue');
 
-const highScore = document.querySelector('#high-score');
-const currentScore = document.querySelector('#current-score');
-
 const simonSequence = [];
 const playerSequence = [];
 
@@ -54,7 +51,6 @@ function displaySimonPattern() {
   }
 }
 
-
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
   compareSequences();
@@ -72,16 +68,34 @@ blueTile.addEventListener('click', () => {
   compareSequences();
 })
 
-let n = 0;
+const docHighScore = document.querySelector('#high-score');
+const docCurrentScore = document.querySelector('#current-score');
+
+//WHAT AM I TRYING TO DO? Every time the player clicks a correct tile it will increment current score by one. If it's higher than the high, it will also increment high score. After the player loses, the current score will be reset, while high score will remain.
+
+let highScore = 0;
+let currentScore = 0;
+
+function scoreCounter() {
+  currentScore++;
+  docCurrentScore.textContent = currentScore;
+  if (currentScore > highScore) {
+    highScore++;
+    docHighScore.textContent = highScore;
+  }
+}
+
+let roundCounter = 0;
 function compareSequences() {
   if (playerSequence.toString() === simonSequence.toString()){
     setTimeout(function() {
       simonSequence.push(getSimonColor());
       displaySimonPattern();
     }, 250); //sets time between last player click and the next simon cycle
+    scoreCounter();
     playerSequence.length = 0;
-    n = 0;
-  } else if (playerSequence[n] !== simonSequence[n]) {
+    roundCounter = 0;
+  } else if (playerSequence[roundCounter] !== simonSequence[roundCounter]) {
     simonSequence.length = 0;
     function displayLosingPattern() {
       displayTileColor(greenTile, "green");
@@ -89,18 +103,19 @@ function compareSequences() {
       displayTileColor(yellowTile, "yellow");
       displayTileColor(blueTile, "blue");
     }
+    currentScore = 0;
+    docCurrentScore.textContent = 0;
     displayLosingPattern();
   } else {
-    n++;
+    scoreCounter();
+    roundCounter++;
   }
 }
-
 
 function playSimon() {
   simonSequence.push(getSimonColor());
   playerSequence.length = 0;
   displaySimonPattern();
-
 }
 
 startBtn.addEventListener('click', playSimon);
