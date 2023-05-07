@@ -84,8 +84,6 @@ function compareSequences() {
   }
 }
 
-console.log(playerSequence.toString())
-
 //It will break by simply only getting the last one correct. This is because it ONLY compares the last to see if they're accurate. It needs to compare every single index. for loop, every iteration will use i for comparing playerArray[i] === simonSequence[i].
 //The specific issue I'm dealing with is I need to figure out how to compare two arrays to eachother index-by-index, and only return true if the arrays are completely equal.
 
