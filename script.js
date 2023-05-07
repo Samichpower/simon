@@ -62,9 +62,10 @@ function displaySimonPattern() {
 }
 
 function displayLosingPattern() {
-  setTimeout(function() {
-
-  })
+  displayTileColor(greenTile, "green");
+  displayTileColor(redTile, "red");
+  displayTileColor(yellowTile, "yellow");
+  displayTileColor(blueTile, "blue");
 }
 
 greenTile.addEventListener('click', () => {
@@ -95,7 +96,7 @@ function compareSequences() {
     n = 0;
   } else if (playerSequence[n] !== simonSequence[n]) {
     simonSequence.length = 0;
-    console.log("YOU LOSE");
+    displayLosingPattern();
   } else {
     n++;
   }
