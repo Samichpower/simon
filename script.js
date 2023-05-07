@@ -62,23 +62,22 @@ let n = 0;
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
   compareSequences();
-  n++;
 })
 redTile.addEventListener('click', () => {
   playerSequence.push("red");
   compareSequences();
-  n++;
 })
 yellowTile.addEventListener('click', () => {
   playerSequence.push("yellow");
   compareSequences();
-  n++;
 })
 blueTile.addEventListener('click', () => {
   playerSequence.push("blue");
   compareSequences();
-  n++;
 })
+
+//compareSequences is being ran and THEN the counter is going from 0 to 1. Every click it needs to go up 1, but it needs to be 0 
+//I need n to be incremented, but it also needs to be 0 at the start of every simon cycle.
 
 function compareSequences() {
   if (playerSequence.toString() === simonSequence.toString()){
@@ -88,6 +87,8 @@ function compareSequences() {
   } else if (playerSequence[n] !== simonSequence[n]) {
     console.log(playerSequence[n], simonSequence[n]);
     console.log("IT AINT THE SAME");
+  } else {
+    n++;
   }
 }
 
