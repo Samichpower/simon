@@ -10,7 +10,7 @@
 //FANCY THINGS TO ADD:
 //Counter to display the players current streak/level
 //Flashing lights for when the player clicks a wrong tile
-//Way for the game start brand new when the player clicks START GAME
+//Add sounds. Final step.
 
 const startBtn = document.querySelector('.start-button');
 const greenTile = document.querySelector('#green');
@@ -62,8 +62,6 @@ function displaySimonPattern() {
   }
 }
 
-let n = 0;
-
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
   compareSequences();
@@ -81,9 +79,12 @@ blueTile.addEventListener('click', () => {
   compareSequences();
 })
 
+let n = 0;
 function compareSequences() {
   if (playerSequence.toString() === simonSequence.toString()){
-    displaySimonPattern();
+    setTimeout(function() {
+      displaySimonPattern();
+    }, 250); //sets time between last player click and the next simon cycle
     playerSequence.length = 0;
     n = 0;
   } else if (playerSequence[n] !== simonSequence[n]) {
