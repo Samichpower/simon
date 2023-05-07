@@ -7,6 +7,11 @@
 //once the players array is equal to simons array, proceed to the next iteration, aka displaySimonPattern()
 //After the players answer is completely equal to simons, it needs to behave as if start game was clicked again, as it is now at least.
 
+//FANCY THINGS TO ADD:
+//Counter to display the players current streak/level
+//Flashing lights for when the player clicks a wrong tile
+//Way for the game start brand new when the player clicks START GAME
+
 const startBtn = document.querySelector('.start-button');
 const greenTile = document.querySelector('#green');
 const redTile = document.querySelector('#red');
@@ -76,25 +81,18 @@ blueTile.addEventListener('click', () => {
   compareSequences();
 })
 
-//compareSequences is being ran and THEN the counter is going from 0 to 1. Every click it needs to go up 1, but it needs to be 0 
-//I need n to be incremented, but it also needs to be 0 at the start of every simon cycle.
-
 function compareSequences() {
   if (playerSequence.toString() === simonSequence.toString()){
     displaySimonPattern();
     playerSequence.length = 0;
     n = 0;
   } else if (playerSequence[n] !== simonSequence[n]) {
-    console.log(playerSequence[n], simonSequence[n]);
-    console.log("IT AINT THE SAME");
+    simonSequence.length = 0;
+    console.log("YOU LOSE");
   } else {
     n++;
   }
 }
-
-//maybe a loop that increases the counter every time a tile is clicked, and that number is used to compare the array indexes.
-//It will break by simply only getting the last one correct. This is because it ONLY compares the last to see if they're accurate. It needs to compare every single index. for loop, every iteration will use i for comparing playerArray[i] === simonSequence[i].
-//The specific issue I'm dealing with is I need to figure out how to compare two arrays to eachother index-by-index, and only return true if the arrays are completely equal.
 
 
 function playSimon() {
