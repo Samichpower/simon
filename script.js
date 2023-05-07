@@ -1,15 +1,5 @@
-//if at the end of the sequence the players array is equal to simons array, run displaySimonPattern().
-//If not, give an error, perhaps flash all squares white 3 times, end the game.
-
-//START GAME
-//gives a pattern
-//player matches the pattern
-//once the players array is equal to simons array, proceed to the next iteration, aka displaySimonPattern()
-//After the players answer is completely equal to simons, it needs to behave as if start game was clicked again, as it is now at least.
-
 //FANCY THINGS TO ADD:
 //Counter to display the players current streak/level
-//Flashing lights for when the player clicks a wrong tile
 //Add sounds. Final step.
 
 const startBtn = document.querySelector('.start-button');
