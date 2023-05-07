@@ -79,17 +79,14 @@ blueTile.addEventListener('click', () => {
 })
 
 function compare() {
-  if (playerSequence[playerSequence.length - 1] === simonSequence[simonSequence.length - 1]) {
+  if (playerSequence[simonSequence.length - 1] === simonSequence[simonSequence.length - 1]) {
     displaySimonPattern();
     playerSequence.length = 0;
-  } else {
-    console.log("asdasd");
   }
 }
 
-//UP ABOVE ITS CHECKING THE STRING VALUE NOT THE NUMBERICAL VALUE
-//NEEDS TO RETURN THE NUMBERICAL VALUE?
-//What's happening, it's not comparing the last two array indexes to see if they're the same, it's grabbing the playerSequence as it's clicked, and when it happens to be the same as the last of the simonSequence, for example Red-Blue-Red, it will repeat after the first click, as red === red.
+//What's happening, it's not comparing the last two array indexes to see if they're the same, it's grabbing the playerSequence as it's clicked, and when it happens to be the same as the last of the simonSequence, for example Red-Blue-Red, it will repeat after the first click, as red === red. Maybe i need to add a way to compare to see if their lengths are the same. 
+//WHY ITS RETURNING FALSE: Because the index values are not the same in the comparison.
 
 
 function playSimon() {
