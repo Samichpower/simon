@@ -1,6 +1,3 @@
-//FANCY THINGS TO ADD:
-//Add sounds. Final step.
-
 const startBtn = document.querySelector('.start-button');
 const greenTile = document.querySelector('#green');
 const redTile = document.querySelector('#red');
@@ -72,27 +69,27 @@ function displaySimonPattern() {
 }
 
 greenTile.addEventListener('click', () => {
-  playerSequence.push("green");
   greenAudio.load();
   greenAudio.play();
+  playerSequence.push("green");
   compareSequences();
 })
 redTile.addEventListener('click', () => {
-  playerSequence.push("red");
   redAudio.load();
   redAudio.play();
+  playerSequence.push("red");
   compareSequences();
 })
 yellowTile.addEventListener('click', () => {
-  playerSequence.push("yellow");
   yellowAudio.load();
   yellowAudio.play();
+  playerSequence.push("yellow");
   compareSequences();
 })
 blueTile.addEventListener('click', () => {
-  playerSequence.push("blue");
   blueAudio.load();
   blueAudio.play();
+  playerSequence.push("blue");
   compareSequences();
 })
 
@@ -111,12 +108,13 @@ function scoreCounter() {
 }
 
 let roundCounter = 0;
+
 function compareSequences() {
   if (playerSequence.toString() === simonSequence.toString()){
     setTimeout(function() {
       simonSequence.push(getSimonColor());
       displaySimonPattern();
-    }, 250); //sets time between last player click and the next simon cycle
+    }, 650); //sets time between last player click and the next simon cycle
     scoreCounter();
     playerSequence.length = 0;
     roundCounter = 0;
