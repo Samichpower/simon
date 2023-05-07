@@ -1,5 +1,5 @@
 //FANCY THINGS TO ADD:
-//Counter to display the players current streak/level
+//Fix the button 
 //Add sounds. Final step.
 
 const startBtn = document.querySelector('.start-button');
@@ -70,9 +70,6 @@ blueTile.addEventListener('click', () => {
 
 const docHighScore = document.querySelector('#high-score');
 const docCurrentScore = document.querySelector('#current-score');
-
-//WHAT AM I TRYING TO DO? Every time the player clicks a correct tile it will increment current score by one. If it's higher than the high, it will also increment high score. After the player loses, the current score will be reset, while high score will remain.
-
 let highScore = 0;
 let currentScore = 0;
 
@@ -95,6 +92,7 @@ function compareSequences() {
     scoreCounter();
     playerSequence.length = 0;
     roundCounter = 0;
+
   } else if (playerSequence[roundCounter] !== simonSequence[roundCounter]) {
     simonSequence.length = 0;
     function displayLosingPattern() {
@@ -106,6 +104,7 @@ function compareSequences() {
     currentScore = 0;
     docCurrentScore.textContent = 0;
     displayLosingPattern();
+
   } else {
     scoreCounter();
     roundCounter++;
@@ -113,9 +112,12 @@ function compareSequences() {
 }
 
 function playSimon() {
-  simonSequence.push(getSimonColor());
-  playerSequence.length = 0;
-  displaySimonPattern();
+  if (simonSequence.length === 0) {
+    simonSequence.push(getSimonColor());
+    playerSequence.length = 0;
+    displaySimonPattern();
+  }
+  
 }
 
 startBtn.addEventListener('click', playSimon);
