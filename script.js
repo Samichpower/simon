@@ -38,15 +38,14 @@ function getSimonColor() {
   }
 }
 
-function displaySimonPattern() {
-  simonSequence.push(getSimonColor());
-  function displayTileColor(tileColor, originalColor) {
-    tileColor.style.backgroundColor = "white";
-    setTimeout(function() {
-      tileColor.style.backgroundColor = originalColor;
-    }, 300); //sets how long the white is shown for
-  }
+function displayTileColor(tileColor, originalColor) {
+  tileColor.style.backgroundColor = "white";
+  setTimeout(function() {
+    tileColor.style.backgroundColor = originalColor;
+  }, 300); //sets how long the white is shown for
+}
 
+function displaySimonPattern() {
   for (let i = 0; i < simonSequence.length; i++) {
     setTimeout(function() {
     if (simonSequence[i] === "green") {
@@ -60,6 +59,12 @@ function displaySimonPattern() {
     }
     }, i * 500); //sets time between white flashes
   }
+}
+
+function displayLosingPattern() {
+  setTimeout(function() {
+
+  })
 }
 
 greenTile.addEventListener('click', () => {
@@ -83,6 +88,7 @@ let n = 0;
 function compareSequences() {
   if (playerSequence.toString() === simonSequence.toString()){
     setTimeout(function() {
+      simonSequence.push(getSimonColor());
       displaySimonPattern();
     }, 250); //sets time between last player click and the next simon cycle
     playerSequence.length = 0;
@@ -97,6 +103,7 @@ function compareSequences() {
 
 
 function playSimon() {
+  simonSequence.push(getSimonColor());
   playerSequence.length = 0;
   displaySimonPattern();
 
