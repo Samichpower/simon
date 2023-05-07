@@ -59,34 +59,44 @@ function displaySimonPattern() {
 
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
-  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]);
-  compare()
+  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]); //debugging purposes
+  compareSequences();
 })
 redTile.addEventListener('click', () => {
   playerSequence.push("red");
-  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]);
-  compare()
+  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]); //debugging purposes
+  compareSequences();
 })
 yellowTile.addEventListener('click', () => {
   playerSequence.push("yellow");
-  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]);
-  compare()
+  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]); //debugging purposes
+  compareSequences();
 })
 blueTile.addEventListener('click', () => {
   playerSequence.push("blue");
-  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]);
-  compare()
+  console.log(playerSequence[playerSequence.length - 1], simonSequence[simonSequence.length - 1]); //debugging purposes
+  compareSequences();
 })
 
-function compare() {
-  if (playerSequence[simonSequence.length - 1] === simonSequence[simonSequence.length - 1]) {
-    displaySimonPattern();
-    playerSequence.length = 0;
+function compareSequences() {
+  // if (playerSequence[simonSequence.length - 1] === simonSequence[simonSequence.length - 1]) {
+  //   displaySimonPattern();
+  //   playerSequence.length = 0;
+  // } THIS WORKS ONLY FOR THE LAST ONE.
+
+  for (let i = 0; i < simonSequence.length; i++) {
+    if (playerSequence.toString() === simonSequence.toString()){
+      displaySimonPattern();
+      console.log(playerSequence.toString())
+      playerSequence.length = 0;
+    }
   }
 }
 
-//What's happening, it's not comparing the last two array indexes to see if they're the same, it's grabbing the playerSequence as it's clicked, and when it happens to be the same as the last of the simonSequence, for example Red-Blue-Red, it will repeat after the first click, as red === red. Maybe i need to add a way to compare to see if their lengths are the same. 
-//WHY ITS RETURNING FALSE: Because the index values are not the same in the comparison.
+console.log(playerSequence.toString())
+
+//It will break by simply only getting the last one correct. This is because it ONLY compares the last to see if they're accurate. It needs to compare every single index. for loop, every iteration will use i for comparing playerArray[i] === simonSequence[i].
+//The specific issue I'm dealing with is I need to figure out how to compare two arrays to eachother index-by-index, and only return true if the arrays are completely equal.
 
 
 function playSimon() {
