@@ -7,6 +7,11 @@ const redTile = document.querySelector('#red');
 const yellowTile = document.querySelector('#yellow');
 const blueTile = document.querySelector('#blue');
 
+const greenAudio = new Audio('./audio/simon-green.mp3');
+const redAudio = new Audio('./audio/simon-red.mp3');
+const yellowAudio = new Audio('./audio/simon-yellow.mp3');
+const blueAudio = new Audio('./audio/simon-blue.mp3');
+
 const simonSequence = [];
 const playerSequence = [];
 
@@ -29,6 +34,22 @@ function getSimonColor() {
 
 function displayTileColor(tileColor, originalColor) {
   tileColor.style.backgroundColor = "white";
+  function playTileAudio(tileColor) {
+    if (tileColor === greenTile) {
+      greenAudio.load();
+      greenAudio.play();
+    } else if (tileColor === redTile) {
+      redAudio.load();
+      redAudio.play();
+    } else if (tileColor === yellowTile) {
+      yellowAudio.load();
+      yellowAudio.play();
+    } else if (tileColor === blueTile) {
+      blueAudio.load();
+      blueAudio.play();
+    } 
+  }
+  playTileAudio(tileColor);
   setTimeout(function() {
     tileColor.style.backgroundColor = originalColor;
   }, 300); //sets how long the white is shown for
@@ -52,18 +73,26 @@ function displaySimonPattern() {
 
 greenTile.addEventListener('click', () => {
   playerSequence.push("green");
+  greenAudio.load();
+  greenAudio.play();
   compareSequences();
 })
 redTile.addEventListener('click', () => {
   playerSequence.push("red");
+  redAudio.load();
+  redAudio.play();
   compareSequences();
 })
 yellowTile.addEventListener('click', () => {
   playerSequence.push("yellow");
+  yellowAudio.load();
+  yellowAudio.play();
   compareSequences();
 })
 blueTile.addEventListener('click', () => {
   playerSequence.push("blue");
+  blueAudio.load();
+  blueAudio.play();
   compareSequences();
 })
 
